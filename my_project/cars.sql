@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1
--- Время создания: Дек 08 2021 г., 10:18
+-- Время создания: Дек 08 2021 г., 11:12
 -- Версия сервера: 10.4.22-MariaDB
 -- Версия PHP: 8.0.13
 
@@ -24,20 +24,6 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `cars`
---
-
-CREATE TABLE `cars` (
-  `id` int(11) NOT NULL,
-  `brand` int(11) NOT NULL,
-  `model` int(11) NOT NULL,
-  `equipment` int(11) NOT NULL,
-  `cost` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
 -- Структура таблицы `cost`
 --
 
@@ -46,28 +32,19 @@ CREATE TABLE `cost` (
   `cost` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- --------------------------------------------------------
-
 --
--- Структура таблицы `equipment`
+-- Дамп данных таблицы `cost`
 --
 
-CREATE TABLE `equipment` (
-  `id` int(11) NOT NULL,
-  `equipment` varchar(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+INSERT INTO `cost` (`id`, `cost`) VALUES
+(1, 200000),
+(2, 150000),
+(3, 80000),
+(4, 180000);
 
 --
 -- Индексы сохранённых таблиц
 --
-
---
--- Индексы таблицы `cars`
---
-ALTER TABLE `cars`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `equipment` (`equipment`),
-  ADD KEY `cost` (`cost`);
 
 --
 -- Индексы таблицы `cost`
@@ -76,43 +53,14 @@ ALTER TABLE `cost`
   ADD PRIMARY KEY (`id`);
 
 --
--- Индексы таблицы `equipment`
---
-ALTER TABLE `equipment`
-  ADD PRIMARY KEY (`id`);
-
---
 -- AUTO_INCREMENT для сохранённых таблиц
 --
-
---
--- AUTO_INCREMENT для таблицы `cars`
---
-ALTER TABLE `cars`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT для таблицы `cost`
 --
 ALTER TABLE `cost`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT для таблицы `equipment`
---
-ALTER TABLE `equipment`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- Ограничения внешнего ключа сохраненных таблиц
---
-
---
--- Ограничения внешнего ключа таблицы `cars`
---
-ALTER TABLE `cars`
-  ADD CONSTRAINT `cars_ibfk_1` FOREIGN KEY (`cost`) REFERENCES `cost` (`id`),
-  ADD CONSTRAINT `cars_ibfk_2` FOREIGN KEY (`equipment`) REFERENCES `equipment` (`id`);
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
